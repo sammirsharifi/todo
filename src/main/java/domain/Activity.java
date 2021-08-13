@@ -10,6 +10,8 @@ public class Activity {
    public static final String ActivityTypeName="Activity_type";
    public static final String CreateDate="CreateDate";
     public static final String UserId="UserId";
+    public static final String ActivityName="ActivityName";
+
     @Id
     @GeneratedValue
     private Integer id;
@@ -25,6 +27,17 @@ public class Activity {
 
     @Column(name = UserId)
     private Integer user;
+
+    @Column(name = ActivityName )
+    private String activityName;
+
+    public String getActivityName() {
+        return activityName;
+    }
+
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
+    }
 
     public Integer getUser() {
         return user;
@@ -59,11 +72,35 @@ public class Activity {
         this.createDate = createDate;
     }
 
-
-
+    public int compareToById(Activity o) {
+        if (o.getId()== null || id == null) {
+            return 0;
+        }
+        return id.compareTo(o.getId());
     }
 
-    enum  ActivityEnum
-    {
-        Open, InProgress, Completed
+    public int compareToByType(Activity o) {
+        if (o.getActivityType()== null || activityType == null) {
+            return 0;
+        }
+        return activityType.compareTo(o.getActivityType());
     }
+    public int compareToByName(Activity o) {
+        if (o.getActivityName()== null || activityName == null) {
+            return 0;
+        }
+        return activityName.compareTo(o.getActivityName());
+    }
+
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "id=" + id +
+                ", activityType='" + activityType + '\'' +
+                ", createDate='" + createDate + '\'' +
+                ", activityName='" + activityName + '\'' +
+                '}';
+    }
+}
+

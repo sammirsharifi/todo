@@ -1,5 +1,7 @@
 package domain;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,8 @@ public class User {
     @GeneratedValue
     private Integer id;
 
-    @Column(name = user_name, length = 1024)
+    @NotNull
+    @Column(name = user_name, length = 1024,unique = true)
     private String username;
 
 
@@ -54,6 +57,9 @@ public class User {
         this.password = password;
     }
 
+
+
+
     @Override
     public String toString() {
         return "User{" +
@@ -61,4 +67,6 @@ public class User {
                 ", username='" + username + '\'' +
                 '}';
     }
+
+
 }

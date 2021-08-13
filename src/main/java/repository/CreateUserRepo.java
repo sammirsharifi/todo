@@ -1,5 +1,6 @@
 package repository;
 
+import domain.Activity;
 import domain.User;
 import util.HibernateUtil;
 
@@ -27,6 +28,8 @@ public class CreateUserRepo extends BaseEntryImpl {
         entityManager.getTransaction().commit();
 
     }
+
+
 
 
 }
